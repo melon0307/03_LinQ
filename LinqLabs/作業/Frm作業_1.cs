@@ -24,8 +24,8 @@ namespace MyHomeWork
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {             
-           int position = this.bindingSource1.Position;
-           this.dataGridView2.DataSource = this.nwDataSet1.Orders[position].GetOrder_DetailsRows();
+           //int position = this.bindingSource1.Position;
+           //this.dataGridView2.DataSource = this.nwDataSet1.Orders[position].GetOrder_DetailsRows();
         } 
         
 
@@ -56,9 +56,9 @@ namespace MyHomeWork
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //this.dataGridView1.DataSource = this.nwDataSet1.Orders;           
-            this.bindingSource1.DataSource = this.nwDataSet1.Orders;
-            this.dataGridView1.DataSource = this.bindingSource1;
+            this.dataGridView1.DataSource = this.nwDataSet1.Orders;           
+            //this.bindingSource1.DataSource = this.nwDataSet1.Orders;
+            //this.dataGridView1.DataSource = this.bindingSource1;
         }
 
         private void LoadYearToCombobox()
@@ -101,8 +101,10 @@ namespace MyHomeWork
                                                                              where o.OrderDate.Year == (int)comboBox1.SelectedValue
                                                                              select o;
             this.dataGridView1.DataSource = selectedYear.ToList();
-            //int position = this.bindingSource1.Position;
+
             //this.bindingSource1.DataSource = selectedYear.ToList();
+            //this.dataGridView1.DataSource = this.bindingSource1;
+            //int position = this.bindingSource1.Position;
             //this.dataGridView2.DataSource = selectedYear.ToList()[position].GetOrder_DetailsRows();
         }
 
@@ -116,11 +118,11 @@ namespace MyHomeWork
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int orderID = (int)this.dataGridView1.CurrentRow.Cells[0].Value;
-            //IEnumerable<global::LinqLabs.NWDataSet.Order_DetailsRow> odr = from od in this.nwDataSet1.Order_Details
-            //                                                                             where od.OrderID == orderID
-            //                                                                             select od;
-            //this.dataGridView2.DataSource = odr.ToList();            
+            int orderID = (int)this.dataGridView1.CurrentRow.Cells[0].Value;
+            IEnumerable<global::LinqLabs.NWDataSet.Order_DetailsRow> odr = from od in this.nwDataSet1.Order_Details
+                                                                           where od.OrderID == orderID
+                                                                           select od;
+            this.dataGridView2.DataSource = odr.ToList();
         }
     }
 }
