@@ -16,6 +16,7 @@ namespace Starter
             InitializeComponent();
             this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
             this.ordersTableAdapter1.Fill(this.nwDataSet1.Orders);
+            
         }
 
         private void IEnumerable_Click(object sender, EventArgs e)

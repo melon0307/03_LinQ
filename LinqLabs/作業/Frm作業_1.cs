@@ -7,36 +7,120 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MyHomeWork
 {
     public partial class Frm作業_1 : Form
     {
+          
         public Frm作業_1()
         {
-            InitializeComponent();
+            InitializeComponent();                                    
+            this.ordersTableAdapter1.Fill(this.nwDataSet1.Orders);
+            this.order_DetailsTableAdapter1.Fill(this.nwDataSet1.Order_Details);
+            LoadYearToCombobox();            
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
+        {             
+           int position = this.bindingSource1.Position;
+           this.dataGridView2.DataSource = this.nwDataSet1.Orders[position].GetOrder_DetailsRows();
+        } 
+        
 
         private void button13_Click(object sender, EventArgs e)
         {
             //this.nwDataSet1.Products.Take(10);//Top 10 Skip(10)
 
             //Distinct()
+
+            IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> selectedYear = from o in this.nwDataSet1.Orders
+                                                                             where o.OrderDate.Year == (int)comboBox1.SelectedValue
+                                                                             select o;
+            this.dataGridView1.DataSource = selectedYear.ToList();
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(@"c:\windows");
+            DirectoryInfo dir = new DirectoryInfo(@"c:\windows");
+            FileInfo[] files =  dir.GetFiles();
 
-            System.IO.FileInfo[] files =  dir.GetFiles();
+            //var ex  
+            IEnumerable<FileInfo> ex = from n in files
+                                       where n.Extension == ".log"
+                                       select n;
 
-            this.dataGridView1.DataSource = files;
+            this.dataGridView1.DataSource = ex.ToList();
+        }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //this.dataGridView1.DataSource = this.nwDataSet1.Orders;           
+            this.bindingSource1.DataSource = this.nwDataSet1.Orders;
+            this.dataGridView1.DataSource = this.bindingSource1;
+        }
+
+        private void LoadYearToCombobox()
+        {
+            IEnumerable<int> year = (from o in this.nwDataSet1.Orders
+                                     select o.OrderDate.Year).Distinct();
+            this.comboBox1.DataSource = year.ToList();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo(@"c:\windows");
+            FileInfo[] files = dir.GetFiles();
+
+            //var createYear
+            IEnumerable<FileInfo> createYear = from n in files
+                                               where n.CreationTimeUtc.Year == 2017
+                                               select n;
+
+            this.dataGridView1.DataSource = createYear.ToList();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo(@"c:\windows");
+            FileInfo[] files = dir.GetFiles();
+
+            //var length
+            IEnumerable<FileInfo> length = from n in files
+                                           where n.Length >= 1000000
+                                           select n;
+
+            this.dataGridView1.DataSource = length.ToList();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> selectedYear = from o in this.nwDataSet1.Orders
+                                                                             where o.OrderDate.Year == (int)comboBox1.SelectedValue
+                                                                             select o;
+            this.dataGridView1.DataSource = selectedYear.ToList();
+            //int position = this.bindingSource1.Position;
+            //this.bindingSource1.DataSource = selectedYear.ToList();
+            //this.dataGridView2.DataSource = selectedYear.ToList()[position].GetOrder_DetailsRows();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> selectedYear = from o in this.nwDataSet1.Orders
+                                                                             where o.OrderDate.Year == (int)comboBox1.SelectedValue
+                                                                             select o;
+            this.dataGridView1.DataSource = selectedYear.ToList();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //int orderID = (int)this.dataGridView1.CurrentRow.Cells[0].Value;
+            //IEnumerable<global::LinqLabs.NWDataSet.Order_DetailsRow> odr = from od in this.nwDataSet1.Order_Details
+            //                                                                             where od.OrderID == orderID
+            //                                                                             select od;
+            //this.dataGridView2.DataSource = odr.ToList();            
         }
     }
 }
