@@ -13,7 +13,8 @@ namespace MyHomeWork
 {
     public partial class Frm作業_1 : Form
     {
-        int skip;  
+        int skip;
+        bool flag = false;
         public Frm作業_1()
         {
             InitializeComponent();                                    
@@ -26,13 +27,11 @@ namespace MyHomeWork
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
-        } 
-        
+        }         
 
         private void button13_Click(object sender, EventArgs e)
         {
             //this.nwDataSet1.Products.Take(10);//Top 10 Skip(10)
-
             //Distinct()
             int rows = Int32.Parse(textBox1.Text);
             skip += Int32.Parse(textBox1.Text);
@@ -48,7 +47,7 @@ namespace MyHomeWork
         private void button14_Click(object sender, EventArgs e)
         {
             DirectoryInfo dir = new DirectoryInfo(@"c:\windows");
-            FileInfo[] files =  dir.GetFiles();
+            FileInfo[] files = dir.GetFiles();
 
             //var ex  
             IEnumerable<FileInfo> ex = from n in files
@@ -56,12 +55,16 @@ namespace MyHomeWork
                                        select n;
 
             this.dataGridView1.DataSource = ex.ToList();
+            isOrder(flag);
+            flag = !flag;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {            
             this.dataGridView1.DataSource = this.nwDataSet1.Orders;
-            
+            isOrder(flag);
+            flag = !flag;
+
             //this.bindingSource1.DataSource = this.nwDataSet1.Orders;
             //this.dataGridView1.DataSource = this.bindingSource1;
         }
@@ -84,6 +87,8 @@ namespace MyHomeWork
                                                select n;
 
             this.dataGridView1.DataSource = createYear.ToList();
+            isOrder(flag);
+            flag = !flag;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -97,6 +102,8 @@ namespace MyHomeWork
                                            select n;
 
             this.dataGridView1.DataSource = length.ToList();
+            isOrder(flag);
+            flag = !flag;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,7 +112,8 @@ namespace MyHomeWork
                                                                              where o.OrderDate.Year == (int)comboBox1.SelectedValue
                                                                              select o;
             this.dataGridView1.DataSource = selectedYear.ToList();
-
+            isOrder(flag);
+            flag = !flag;
             //this.bindingSource1.DataSource = selectedYear.ToList();
             //this.dataGridView1.DataSource = this.bindingSource1;
             //int position = this.bindingSource1.Position;
@@ -138,6 +146,19 @@ namespace MyHomeWork
         {
             int rows = Int32.Parse(textBox1.Text);            
             this.dataGridView2.DataSource = this.nwDataSet1.Products.Take(rows).ToList();
+        }
+
+        private void isOrder(bool flag)
+        {
+            if (flag)
+            {
+                this.dataGridView1.CellClick -= dataGridView1_CellContentClick;
+                dataGridView2.DataSource = null;                                
+            }
+            else
+            {
+                this.dataGridView1.CellClick += dataGridView1_CellContentClick;
+            }            
         }
     }
 }
