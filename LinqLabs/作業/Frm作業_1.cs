@@ -19,6 +19,7 @@ namespace MyHomeWork
             InitializeComponent();                                    
             this.ordersTableAdapter1.Fill(this.nwDataSet1.Orders);
             this.order_DetailsTableAdapter1.Fill(this.nwDataSet1.Order_Details);
+            this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
             LoadYearToCombobox();            
         }
 
@@ -135,8 +136,7 @@ namespace MyHomeWork
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int rows = Int32.Parse(textBox1.Text);
-            this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
+            int rows = Int32.Parse(textBox1.Text);            
             this.dataGridView2.DataSource = this.nwDataSet1.Products.Take(rows).ToList();
         }
     }
