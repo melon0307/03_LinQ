@@ -35,10 +35,8 @@ namespace MyHomeWork
             //Distinct()
             int rows = Int32.Parse(textBox1.Text);
             skip += Int32.Parse(textBox1.Text);
-            if (skip > this.nwDataSet1.Products.Rows.Count)
-            {
-                skip = skip - rows;
-            }
+            if (skip > this.nwDataSet1.Products.Rows.Count)            
+                skip = skip - rows;            
 
             var q = this.nwDataSet1.Products.Where(x=>!(x.IsCategoryIDNull()||x.IsQuantityPerUnitNull()
                                                  ||x.IsReorderLevelNull()||x.IsSupplierIDNull()||x.IsUnitPriceNull()||x.IsUnitsInStockNull()
@@ -117,10 +115,8 @@ namespace MyHomeWork
         {
             int rows = Int32.Parse(textBox1.Text);
             skip -= Int32.Parse(textBox1.Text);
-            if (skip < 0)
-            {
-                skip = 0;
-            }
+            if (skip < 0)            
+                skip = 0;            
 
             var q = this.nwDataSet1.Products.Where(x => !(x.IsCategoryIDNull() || x.IsQuantityPerUnitNull()
                                                  || x.IsReorderLevelNull() || x.IsSupplierIDNull() || x.IsUnitPriceNull() || x.IsUnitsInStockNull()
