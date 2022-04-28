@@ -182,9 +182,12 @@ namespace Starter
         private void button7_Click(object sender, EventArgs e)
         {
             IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> q = from o in this.nwDataSet1.Orders
-                                                                  where !o.IsOrderDateNull() && o.OrderDate.Year == 1997 && o.OrderDate.Month >=1 && o.OrderDate.Month <=3
+                                                                  where !o.IsOrderDateNull() && o.OrderDate.Year == 1997 && o.OrderDate.Month >= 1 && o.OrderDate.Month <= 3
                                                                   select o;
             this.dataGridView1.DataSource = q.ToList();
+
+            //var p = this.nwDataSet1.Orders.Select(s => s.OrderDate).ToList();
+            //this.dataGridView1.DataSource = p;
         }
     }
 }

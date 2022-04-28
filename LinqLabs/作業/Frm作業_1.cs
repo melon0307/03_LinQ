@@ -13,7 +13,7 @@ namespace MyHomeWork
 {
     public partial class Frm作業_1 : Form
     {
-          
+        int skip;  
         public Frm作業_1()
         {
             InitializeComponent();                                    
@@ -23,9 +23,8 @@ namespace MyHomeWork
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {             
-           //int position = this.bindingSource1.Position;
-           //this.dataGridView2.DataSource = this.nwDataSet1.Orders[position].GetOrder_DetailsRows();
+        {
+
         } 
         
 
@@ -34,11 +33,17 @@ namespace MyHomeWork
             //this.nwDataSet1.Products.Take(10);//Top 10 Skip(10)
 
             //Distinct()
+            int rows = Int32.Parse(textBox1.Text);
+            skip += Int32.Parse(textBox1.Text);
+            if (skip > this.nwDataSet1.Products.Rows.Count)
+            {
+                skip = skip - rows;
+            }
 
-            IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> selectedYear = from o in this.nwDataSet1.Orders
-                                                                             where o.OrderDate.Year == (int)comboBox1.SelectedValue
-                                                                             select o;
-            this.dataGridView1.DataSource = selectedYear.ToList();
+            var q = this.nwDataSet1.Products.Where(x=>!(x.IsCategoryIDNull()||x.IsQuantityPerUnitNull()
+                                                 ||x.IsReorderLevelNull()||x.IsSupplierIDNull()||x.IsUnitPriceNull()||x.IsUnitsInStockNull()
+                                                 ||x.IsUnitsOnOrderNull())).Skip(skip).Take(rows).ToList();
+            this.dataGridView2.DataSource = q;
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -55,8 +60,9 @@ namespace MyHomeWork
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {
-            this.dataGridView1.DataSource = this.nwDataSet1.Orders;           
+        {            
+            this.dataGridView1.DataSource = this.nwDataSet1.Orders;
+            
             //this.bindingSource1.DataSource = this.nwDataSet1.Orders;
             //this.dataGridView1.DataSource = this.bindingSource1;
         }
@@ -95,8 +101,7 @@ namespace MyHomeWork
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-
+        {           
             IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> selectedYear = from o in this.nwDataSet1.Orders
                                                                              where o.OrderDate.Year == (int)comboBox1.SelectedValue
                                                                              select o;
@@ -110,10 +115,17 @@ namespace MyHomeWork
 
         private void button12_Click(object sender, EventArgs e)
         {
-            IEnumerable<global::LinqLabs.NWDataSet.OrdersRow> selectedYear = from o in this.nwDataSet1.Orders
-                                                                             where o.OrderDate.Year == (int)comboBox1.SelectedValue
-                                                                             select o;
-            this.dataGridView1.DataSource = selectedYear.ToList();
+            int rows = Int32.Parse(textBox1.Text);
+            skip -= Int32.Parse(textBox1.Text);
+            if (skip < 0)
+            {
+                skip = 0;
+            }
+
+            var q = this.nwDataSet1.Products.Where(x => !(x.IsCategoryIDNull() || x.IsQuantityPerUnitNull()
+                                                 || x.IsReorderLevelNull() || x.IsSupplierIDNull() || x.IsUnitPriceNull() || x.IsUnitsInStockNull()
+                                                 || x.IsUnitsOnOrderNull())).Skip(skip).Take(rows).ToList();
+            this.dataGridView2.DataSource = q;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -123,6 +135,13 @@ namespace MyHomeWork
                                                                            where od.OrderID == orderID
                                                                            select od;
             this.dataGridView2.DataSource = odr.ToList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int rows = Int32.Parse(textBox1.Text);
+            this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
+            this.dataGridView2.DataSource = this.nwDataSet1.Products.Take(rows).ToList();
         }
     }
 }

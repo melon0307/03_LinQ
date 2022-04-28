@@ -54,9 +54,11 @@ namespace MyHomeWork
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nwDataSet1 = new LinqLabs.NWDataSet();
             this.ordersTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.OrdersTableAdapter();
             this.order_DetailsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.Order_DetailsTableAdapter();
-            this.nwDataSet1 = new LinqLabs.NWDataSet();
+            this.button3 = new System.Windows.Forms.Button();
+            this.productsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -165,11 +167,15 @@ namespace MyHomeWork
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(5, 45);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(628, 401);
@@ -187,6 +193,7 @@ namespace MyHomeWork
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label9);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
@@ -215,7 +222,7 @@ namespace MyHomeWork
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("新細明體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(949, 261);
+            this.label3.Location = new System.Drawing.Point(924, 261);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 14);
@@ -298,7 +305,7 @@ namespace MyHomeWork
             // 
             this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button13.ForeColor = System.Drawing.Color.Black;
-            this.button13.Location = new System.Drawing.Point(1405, 290);
+            this.button13.Location = new System.Drawing.Point(1380, 290);
             this.button13.Margin = new System.Windows.Forms.Padding(5);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(137, 42);
@@ -322,7 +329,7 @@ namespace MyHomeWork
             // 
             this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button12.ForeColor = System.Drawing.Color.Black;
-            this.button12.Location = new System.Drawing.Point(1256, 290);
+            this.button12.Location = new System.Drawing.Point(1231, 290);
             this.button12.Margin = new System.Windows.Forms.Padding(5);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(137, 42);
@@ -347,7 +354,7 @@ namespace MyHomeWork
             // 
             this.textBox1.Font = new System.Drawing.Font("新細明體", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.textBox1.Location = new System.Drawing.Point(1056, 294);
+            this.textBox1.Location = new System.Drawing.Point(1031, 294);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(180, 23);
@@ -359,7 +366,7 @@ namespace MyHomeWork
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("新細明體", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(937, 298);
+            this.label1.Location = new System.Drawing.Point(912, 298);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 14);
@@ -396,6 +403,11 @@ namespace MyHomeWork
             this.bindingSource1.DataSource = this.nwDataSet1;
             this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
+            // nwDataSet1
+            // 
+            this.nwDataSet1.DataSetName = "NWDataSet";
+            this.nwDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ordersTableAdapter1
             // 
             this.ordersTableAdapter1.ClearBeforeFill = true;
@@ -404,19 +416,30 @@ namespace MyHomeWork
             // 
             this.order_DetailsTableAdapter1.ClearBeforeFill = true;
             // 
-            // nwDataSet1
+            // button3
             // 
-            this.nwDataSet1.DataSetName = "NWDataSet";
-            this.nwDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button3.Location = new System.Drawing.Point(689, 290);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(213, 42);
+            this.button3.TabIndex = 136;
+            this.button3.Text = "Product";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // productsTableAdapter1
+            // 
+            this.productsTableAdapter1.ClearBeforeFill = true;
             // 
             // Frm作業_1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1531, 801);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.label2);
-            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm作業_1";
             this.Text = "Frm作業_1";
@@ -469,5 +492,7 @@ namespace MyHomeWork
         private LinqLabs.NWDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter1;
         private LinqLabs.NWDataSetTableAdapters.Order_DetailsTableAdapter order_DetailsTableAdapter1;
         private LinqLabs.NWDataSet nwDataSet1;
+        private System.Windows.Forms.Button button3;
+        private LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
     }
 }
