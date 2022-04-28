@@ -59,6 +59,7 @@ namespace MyHomeWork
             this.order_DetailsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.Order_DetailsTableAdapter();
             this.button3 = new System.Windows.Forms.Button();
             this.productsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -193,6 +194,7 @@ namespace MyHomeWork
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label9);
@@ -268,7 +270,7 @@ namespace MyHomeWork
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button14.Location = new System.Drawing.Point(57, 72);
+            this.button14.Location = new System.Drawing.Point(57, 41);
             this.button14.Margin = new System.Windows.Forms.Padding(5);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(372, 42);
@@ -341,7 +343,7 @@ namespace MyHomeWork
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button4.Location = new System.Drawing.Point(61, 187);
+            this.button4.Location = new System.Drawing.Point(60, 233);
             this.button4.Margin = new System.Windows.Forms.Padding(5);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(372, 42);
@@ -432,6 +434,18 @@ namespace MyHomeWork
             // 
             this.productsTableAdapter1.ClearBeforeFill = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("新細明體", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label6.ForeColor = System.Drawing.Color.Olive;
+            this.label6.Location = new System.Drawing.Point(31, 173);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(461, 14);
+            this.label6.TabIndex = 137;
+            this.label6.Text = "該檔案路徑無2017年創建的檔案，故更改為2017年之後創建皆顯示。";
+            // 
             // Frm作業_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -494,5 +508,6 @@ namespace MyHomeWork
         private LinqLabs.NWDataSet nwDataSet1;
         private System.Windows.Forms.Button button3;
         private LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
+        private System.Windows.Forms.Label label6;
     }
 }

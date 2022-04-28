@@ -81,7 +81,7 @@ namespace MyHomeWork
 
             //var createYear
             IEnumerable<FileInfo> createYear = from n in files
-                                               where n.CreationTimeUtc.Year == 2017
+                                               where n.CreationTimeUtc.Year >= 2017
                                                select n;
 
             this.dataGridView1.DataSource = createYear.ToList();
