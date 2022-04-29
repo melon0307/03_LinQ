@@ -42,7 +42,6 @@ namespace Starter
             //select p).Take(5).ToList();
 
             var q = this.nwDataSet1.Products.OrderByDescending(p => p.UnitsInStock).Take(5).ToList();
-
             dataGridView1.DataSource = q;
         }
     }
