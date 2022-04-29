@@ -37,11 +37,11 @@ namespace Starter
             // 找product中，庫存最高的5筆。
             this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
 
-            var q = (from p in this.nwDataSet1.Products
-                     orderby p.UnitsInStock descending
-                     select p).Take(5).ToList();
+            //var q = (from p in this.nwDataSet1.Products
+            //orderby p.UnitsInStock descending
+            //select p).Take(5).ToList();
 
-            
+            var q = this.nwDataSet1.Products.OrderByDescending(p => p.UnitsInStock).Take(5).ToList();
 
             dataGridView1.DataSource = q;
         }
