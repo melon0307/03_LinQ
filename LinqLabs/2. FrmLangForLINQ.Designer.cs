@@ -38,13 +38,13 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button45 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
-            this.button41 = new System.Windows.Forms.Button();
+            this.btnObjectInitializer = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
+            this.btnExtend = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -54,15 +54,18 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btnYieldReturn = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnMyWhere = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
+            this.nwDataSet1 = new LinqLabs.NWDataSet();
+            this.productsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter();
             this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -86,6 +89,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nwDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -156,7 +160,7 @@
             this.listBox2.Location = new System.Drawing.Point(0, 0);
             this.listBox2.Margin = new System.Windows.Forms.Padding(5);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(276, 271);
+            this.listBox2.Size = new System.Drawing.Size(269, 243);
             this.listBox2.TabIndex = 54;
             // 
             // buttonX
@@ -174,13 +178,13 @@
             // 
             this.groupBox5.Controls.Add(this.button45);
             this.groupBox5.Controls.Add(this.button43);
-            this.groupBox5.Controls.Add(this.button41);
+            this.groupBox5.Controls.Add(this.btnObjectInitializer);
             this.groupBox5.Controls.Add(this.button40);
             this.groupBox5.Controls.Add(this.button3);
             this.groupBox5.Controls.Add(this.button39);
             this.groupBox5.Controls.Add(this.button34);
             this.groupBox5.Controls.Add(this.button38);
-            this.groupBox5.Controls.Add(this.button32);
+            this.groupBox5.Controls.Add(this.btnExtend);
             this.groupBox5.Controls.Add(this.button6);
             this.groupBox5.Location = new System.Drawing.Point(73, 689);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(5);
@@ -216,19 +220,21 @@
             this.button43.TabIndex = 40;
             this.button43.Text = "匿名型別 Anonymouse type";
             this.button43.UseVisualStyleBackColor = false;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
             // 
-            // button41
+            // btnObjectInitializer
             // 
-            this.button41.AutoSize = true;
-            this.button41.BackColor = System.Drawing.SystemColors.Control;
-            this.button41.ForeColor = System.Drawing.Color.Black;
-            this.button41.Location = new System.Drawing.Point(51, 110);
-            this.button41.Margin = new System.Windows.Forms.Padding(5);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(650, 51);
-            this.button41.TabIndex = 42;
-            this.button41.Text = "物件初始化 (Object Initializer) / 集合初始化 ";
-            this.button41.UseVisualStyleBackColor = false;
+            this.btnObjectInitializer.AutoSize = true;
+            this.btnObjectInitializer.BackColor = System.Drawing.SystemColors.Control;
+            this.btnObjectInitializer.ForeColor = System.Drawing.Color.Black;
+            this.btnObjectInitializer.Location = new System.Drawing.Point(51, 110);
+            this.btnObjectInitializer.Margin = new System.Windows.Forms.Padding(5);
+            this.btnObjectInitializer.Name = "btnObjectInitializer";
+            this.btnObjectInitializer.Size = new System.Drawing.Size(650, 51);
+            this.btnObjectInitializer.TabIndex = 42;
+            this.btnObjectInitializer.Text = "物件初始化 (Object Initializer) / 集合初始化 ";
+            this.btnObjectInitializer.UseVisualStyleBackColor = false;
+            this.btnObjectInitializer.Click += new System.EventHandler(this.btnObjectInitializer_Click);
             // 
             // button40
             // 
@@ -254,6 +260,7 @@
             this.button3.TabIndex = 48;
             this.button3.Text = "從 Linq 實作 看 C# 3.0 ";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button39
             // 
@@ -292,16 +299,17 @@
             this.button38.Text = "Automatic Properties / 自動實作的屬性";
             this.button38.UseVisualStyleBackColor = false;
             // 
-            // button32
+            // btnExtend
             // 
-            this.button32.AutoSize = true;
-            this.button32.Location = new System.Drawing.Point(51, 429);
-            this.button32.Margin = new System.Windows.Forms.Padding(5);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(626, 51);
-            this.button32.TabIndex = 20;
-            this.button32.Text = "擴充方法";
-            this.button32.UseVisualStyleBackColor = true;
+            this.btnExtend.AutoSize = true;
+            this.btnExtend.Location = new System.Drawing.Point(51, 429);
+            this.btnExtend.Margin = new System.Windows.Forms.Padding(5);
+            this.btnExtend.Name = "btnExtend";
+            this.btnExtend.Size = new System.Drawing.Size(626, 51);
+            this.btnExtend.TabIndex = 20;
+            this.btnExtend.Text = "擴充方法";
+            this.btnExtend.UseVisualStyleBackColor = true;
+            this.btnExtend.Click += new System.EventHandler(this.btnExtend_Click);
             // 
             // groupBox1
             // 
@@ -346,8 +354,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(276, 856);
-            this.splitContainer2.SplitterDistance = 456;
+            this.splitContainer2.Size = new System.Drawing.Size(269, 768);
+            this.splitContainer2.SplitterDistance = 407;
             this.splitContainer2.SplitterWidth = 7;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -366,8 +374,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.listBox2);
-            this.splitContainer3.Size = new System.Drawing.Size(276, 456);
-            this.splitContainer3.SplitterDistance = 178;
+            this.splitContainer3.Size = new System.Drawing.Size(269, 407);
+            this.splitContainer3.SplitterDistance = 157;
             this.splitContainer3.SplitterWidth = 7;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -381,7 +389,7 @@
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Margin = new System.Windows.Forms.Padding(5);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(268, 154);
+            this.listBox1.Size = new System.Drawing.Size(261, 94);
             this.listBox1.TabIndex = 47;
             // 
             // splitContainer4
@@ -399,8 +407,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dataGridView2);
-            this.splitContainer4.Size = new System.Drawing.Size(276, 393);
-            this.splitContainer4.SplitterDistance = 192;
+            this.splitContainer4.Size = new System.Drawing.Size(269, 354);
+            this.splitContainer4.SplitterDistance = 170;
             this.splitContainer4.SplitterWidth = 7;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -413,7 +421,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(276, 192);
+            this.dataGridView1.Size = new System.Drawing.Size(269, 170);
             this.dataGridView1.TabIndex = 49;
             // 
             // dataGridView2
@@ -425,12 +433,12 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(276, 194);
+            this.dataGridView2.Size = new System.Drawing.Size(269, 177);
             this.dataGridView2.TabIndex = 50;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button13);
+            this.groupBox2.Controls.Add(this.btnYieldReturn);
             this.groupBox2.Location = new System.Drawing.Point(73, 450);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
@@ -440,18 +448,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Iterator";
             // 
-            // button13
+            // btnYieldReturn
             // 
-            this.button13.AutoSize = true;
-            this.button13.BackColor = System.Drawing.SystemColors.Control;
-            this.button13.ForeColor = System.Drawing.Color.Black;
-            this.button13.Location = new System.Drawing.Point(24, 51);
-            this.button13.Margin = new System.Windows.Forms.Padding(5);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(942, 51);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "C# 2.0公開能逐一查看集合內容的列舉值 - Yield Return";
-            this.button13.UseVisualStyleBackColor = false;
+            this.btnYieldReturn.AutoSize = true;
+            this.btnYieldReturn.BackColor = System.Drawing.SystemColors.Control;
+            this.btnYieldReturn.ForeColor = System.Drawing.Color.Black;
+            this.btnYieldReturn.Location = new System.Drawing.Point(24, 51);
+            this.btnYieldReturn.Margin = new System.Windows.Forms.Padding(5);
+            this.btnYieldReturn.Name = "btnYieldReturn";
+            this.btnYieldReturn.Size = new System.Drawing.Size(942, 51);
+            this.btnYieldReturn.TabIndex = 12;
+            this.btnYieldReturn.Text = "C# 2.0公開能逐一查看集合內容的列舉值 - Yield Return";
+            this.btnYieldReturn.UseVisualStyleBackColor = false;
+            this.btnYieldReturn.Click += new System.EventHandler(this.btnYieldReturn_Click);
             // 
             // splitContainer1
             // 
@@ -474,8 +483,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1569, 856);
-            this.splitContainer1.SplitterDistance = 1283;
+            this.splitContainer1.Size = new System.Drawing.Size(1528, 768);
+            this.splitContainer1.SplitterDistance = 1249;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 64;
             // 
@@ -517,6 +526,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnMyWhere);
             this.groupBox4.Controls.Add(this.button9);
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Controls.Add(this.buttonX);
@@ -528,6 +538,30 @@
             this.groupBox4.TabIndex = 62;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Delegate (委派)";
+            // 
+            // btnMyWhere
+            // 
+            this.btnMyWhere.AutoSize = true;
+            this.btnMyWhere.Location = new System.Drawing.Point(773, 39);
+            this.btnMyWhere.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMyWhere.Name = "btnMyWhere";
+            this.btnMyWhere.Size = new System.Drawing.Size(159, 51);
+            this.btnMyWhere.TabIndex = 53;
+            this.btnMyWhere.Text = "MyWhere";
+            this.btnMyWhere.UseVisualStyleBackColor = true;
+            this.btnMyWhere.Click += new System.EventHandler(this.btnMyWhere_Click);
+            // 
+            // button9
+            // 
+            this.button9.AutoSize = true;
+            this.button9.Location = new System.Drawing.Point(604, 39);
+            this.button9.Margin = new System.Windows.Forms.Padding(5);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(159, 51);
+            this.button9.TabIndex = 52;
+            this.button9.Text = "bool Test (int) ";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button2
             // 
@@ -552,23 +586,20 @@
             this.label1.Size = new System.Drawing.Size(1014, 18);
             this.label1.TabIndex = 46;
             // 
-            // button9
+            // nwDataSet1
             // 
-            this.button9.AutoSize = true;
-            this.button9.Location = new System.Drawing.Point(604, 39);
-            this.button9.Margin = new System.Windows.Forms.Padding(5);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(159, 51);
-            this.button9.TabIndex = 52;
-            this.button9.Text = "bool Test (int) ";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.nwDataSet1.DataSetName = "NWDataSet";
+            this.nwDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productsTableAdapter1
+            // 
+            this.productsTableAdapter1.ClearBeforeFill = true;
             // 
             // FrmLangForLINQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1569, 856);
+            this.ClientSize = new System.Drawing.Size(1528, 768);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -603,6 +634,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nwDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,13 +651,13 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button button45;
         private System.Windows.Forms.Button button43;
-        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button btnObjectInitializer;
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button38;
-        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button btnExtend;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -635,7 +667,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btnYieldReturn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -644,5 +676,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnMyWhere;
+        private LinqLabs.NWDataSet nwDataSet1;
+        private LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
     }
 }
