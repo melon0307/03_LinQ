@@ -55,6 +55,7 @@ namespace MyHomeWork
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productPhotoTableAdapter1 = new LinqLabs.AWDataSetTableAdapters.ProductPhotoTableAdapter();
             this.awDataSet1 = new LinqLabs.AWDataSet();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -204,6 +205,7 @@ namespace MyHomeWork
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox3);
             this.splitContainer1.Panel1.Controls.Add(this.label8);
@@ -254,7 +256,7 @@ namespace MyHomeWork
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(859, 116);
+            this.dateTimePicker2.Location = new System.Drawing.Point(865, 117);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(244, 22);
@@ -275,7 +277,7 @@ namespace MyHomeWork
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(799, 122);
+            this.label7.Location = new System.Drawing.Point(804, 122);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 16);
@@ -296,7 +298,7 @@ namespace MyHomeWork
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(519, 114);
+            this.dateTimePicker1.Location = new System.Drawing.Point(519, 117);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(244, 22);
@@ -358,6 +360,17 @@ namespace MyHomeWork
             this.awDataSet1.DataSetName = "AWDataSet";
             this.awDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(449, 277);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 18);
+            this.label1.TabIndex = 137;
+            // 
             // Frm作業_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -413,5 +426,6 @@ namespace MyHomeWork
         private System.Windows.Forms.Label label6;
         private LinqLabs.AWDataSetTableAdapters.ProductPhotoTableAdapter productPhotoTableAdapter1;
         private LinqLabs.AWDataSet awDataSet1;
+        private System.Windows.Forms.Label label1;
     }
 }
