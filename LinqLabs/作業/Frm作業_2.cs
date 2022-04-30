@@ -48,32 +48,11 @@ namespace MyHomeWork
 
         private void btnSelectQuarter_Click(object sender, EventArgs e)
         {
-            int selectedYear = Int32.Parse(this.comboBox3.Text);
+            int selectedYear = Int32.Parse(this.comboBox3.Text);            
 
-            if (comboBox2.SelectedIndex == 0)
-            {
-                this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
-                    .Where(p => p.ModifiedDate.Year == selectedYear 
-                    && p.ModifiedDate.Month >= 1 && p.ModifiedDate.Month <= 3).ToList();
-            }
-            else if (comboBox2.SelectedIndex == 1)
-            {
-                this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
-                    .Where(p => p.ModifiedDate.Year == selectedYear
-                    && p.ModifiedDate.Month >= 4 && p.ModifiedDate.Month <= 6).ToList();
-            }
-            else if (comboBox2.SelectedIndex == 2)
-            {
-                this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
-                    .Where(p => p.ModifiedDate.Year == selectedYear
-                    && p.ModifiedDate.Month >= 7 && p.ModifiedDate.Month <= 9).ToList();
-            }
-            else  
-            {
-                this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
-                    .Where(p => p.ModifiedDate.Year == selectedYear
-                    && p.ModifiedDate.Month >= 10 && p.ModifiedDate.Month <= 12).ToList();
-            }
+            this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
+                .Where(p => p.ModifiedDate.Year == selectedYear &&
+                (((p.ModifiedDate.Month) - 1 )/ 3) == (this.comboBox2.SelectedIndex)).ToList();           
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
