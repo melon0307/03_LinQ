@@ -27,13 +27,8 @@ namespace MyHomeWork
 
         private void btnSelectDate_Click(object sender, EventArgs e)
         {
-            DateTime date1 = dateTimePicker1.Value;
-            DateTime date2 = dateTimePicker2.Value;
-            if (date2 < date1)
-            {
-                date2 = dateTimePicker1.Value;
-                date1 = dateTimePicker2.Value;
-            }
+            DateTime date1 = dateTimePicker1.Value < dateTimePicker2.Value ? dateTimePicker1.Value : dateTimePicker2.Value;
+            DateTime date2 = dateTimePicker1.Value > dateTimePicker2.Value ? dateTimePicker1.Value : dateTimePicker2.Value;
                 
             this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
                 .Where(p => p.ModifiedDate >= date1 && p.ModifiedDate <= date2).ToList();
