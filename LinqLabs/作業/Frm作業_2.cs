@@ -29,6 +29,12 @@ namespace MyHomeWork
         {
             DateTime date1 = dateTimePicker1.Value;
             DateTime date2 = dateTimePicker2.Value;
+            if (date2 < date1)
+            {
+                date2 = dateTimePicker1.Value;
+                date1 = dateTimePicker2.Value;
+            }
+                
             this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
                 .Where(p => p.ModifiedDate >= date1 && p.ModifiedDate <= date2).ToList();
         }
@@ -37,7 +43,7 @@ namespace MyHomeWork
         {
             int selectedYear = Int32.Parse(this.comboBox3.Text);
             this.dataGridView1.DataSource = 
-                this.awDataSet1.ProductPhoto.Where(p => p.ModifiedDate.Year == selectedYear).ToList();
+                this.awDataSet1.ProductPhoto.Where(p => p.ModifiedDate.Year == selectedYear).ToList();            
         }
 
         private void LoadYearToComboBox()
@@ -48,11 +54,11 @@ namespace MyHomeWork
 
         private void btnSelectQuarter_Click(object sender, EventArgs e)
         {
-            int selectedYear = Int32.Parse(this.comboBox3.Text);            
+            int selectedYear = Int32.Parse(this.comboBox3.Text);
 
             this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
                 .Where(p => p.ModifiedDate.Year == selectedYear &&
-                (((p.ModifiedDate.Month) - 1 )/ 3) == (this.comboBox2.SelectedIndex)).ToList();           
+                (((p.ModifiedDate.Month) - 1 )/ 3) == (this.comboBox2.SelectedIndex)).ToList();          
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
