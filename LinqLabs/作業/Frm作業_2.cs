@@ -81,7 +81,6 @@ namespace MyHomeWork
             byte[] bytes = (byte[]) this.dataGridView1.CurrentRow.Cells[3].Value;
             MemoryStream ms = new MemoryStream(bytes);
             pictureBox1.Image = Image.FromStream(ms);
-
         }
     }
 }
