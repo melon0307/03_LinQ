@@ -44,15 +44,17 @@ namespace MyHomeWork
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSelectDate = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSelectYear = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnSelectQuarter = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.productPhotoTableAdapter1 = new LinqLabs.AWDataSetTableAdapters.ProductPhotoTableAdapter();
+            this.awDataSet1 = new LinqLabs.AWDataSet();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -66,6 +68,7 @@ namespace MyHomeWork
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.awDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -104,7 +107,7 @@ namespace MyHomeWork
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(832, 469);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 103;
             this.pictureBox1.TabStop = false;
             // 
@@ -147,6 +150,7 @@ namespace MyHomeWork
             this.dataGridView1.RowTemplate.Height = 74;
             this.dataGridView1.Size = new System.Drawing.Size(599, 467);
             this.dataGridView1.TabIndex = 71;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // splitContainer2
             // 
@@ -175,7 +179,7 @@ namespace MyHomeWork
             this.label10.Location = new System.Drawing.Point(440, 175);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 22);
+            this.label10.Size = new System.Drawing.Size(24, 16);
             this.label10.TabIndex = 136;
             this.label10.Text = "年:";
             // 
@@ -186,7 +190,7 @@ namespace MyHomeWork
             this.comboBox3.Location = new System.Drawing.Point(519, 171);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(176, 30);
+            this.comboBox3.Size = new System.Drawing.Size(176, 24);
             this.comboBox3.TabIndex = 135;
             // 
             // splitContainer1
@@ -205,13 +209,13 @@ namespace MyHomeWork
             this.splitContainer1.Panel1.Controls.Add(this.label8);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox2);
             this.splitContainer1.Panel1.Controls.Add(this.dateTimePicker2);
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSelectDate);
             this.splitContainer1.Panel1.Controls.Add(this.label7);
-            this.splitContainer1.Panel1.Controls.Add(this.button5);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSelectYear);
             this.splitContainer1.Panel1.Controls.Add(this.dateTimePicker1);
-            this.splitContainer1.Panel1.Controls.Add(this.button10);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSelectQuarter);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.button11);
+            this.splitContainer1.Panel1.Controls.Add(this.btnAll);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             // 
             // splitContainer1.Panel2
@@ -229,7 +233,7 @@ namespace MyHomeWork
             this.label8.Location = new System.Drawing.Point(440, 222);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 22);
+            this.label8.Size = new System.Drawing.Size(24, 16);
             this.label8.TabIndex = 132;
             this.label8.Text = "季:";
             // 
@@ -245,7 +249,7 @@ namespace MyHomeWork
             this.comboBox2.Location = new System.Drawing.Point(519, 222);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(176, 30);
+            this.comboBox2.Size = new System.Drawing.Size(176, 24);
             this.comboBox2.TabIndex = 131;
             // 
             // dateTimePicker2
@@ -253,19 +257,20 @@ namespace MyHomeWork
             this.dateTimePicker2.Location = new System.Drawing.Point(859, 116);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(244, 30);
+            this.dateTimePicker2.Size = new System.Drawing.Size(244, 22);
             this.dateTimePicker2.TabIndex = 130;
             // 
-            // button3
+            // btnSelectDate
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button3.Location = new System.Drawing.Point(67, 112);
-            this.button3.Margin = new System.Windows.Forms.Padding(5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(359, 42);
-            this.button3.TabIndex = 81;
-            this.button3.Text = "     區間腳踏車 ";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnSelectDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSelectDate.Location = new System.Drawing.Point(67, 112);
+            this.btnSelectDate.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSelectDate.Name = "btnSelectDate";
+            this.btnSelectDate.Size = new System.Drawing.Size(359, 42);
+            this.btnSelectDate.TabIndex = 81;
+            this.btnSelectDate.Text = "     區間腳踏車 ";
+            this.btnSelectDate.UseVisualStyleBackColor = false;
+            this.btnSelectDate.Click += new System.EventHandler(this.btnSelectDate_Click);
             // 
             // label7
             // 
@@ -273,40 +278,42 @@ namespace MyHomeWork
             this.label7.Location = new System.Drawing.Point(799, 122);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 22);
+            this.label7.Size = new System.Drawing.Size(15, 16);
             this.label7.TabIndex = 129;
             this.label7.Text = "~";
             // 
-            // button5
+            // btnSelectYear
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(68, 164);
-            this.button5.Margin = new System.Windows.Forms.Padding(5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(359, 42);
-            this.button5.TabIndex = 82;
-            this.button5.Text = "     某年腳踏車 ";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnSelectYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSelectYear.Location = new System.Drawing.Point(68, 164);
+            this.btnSelectYear.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSelectYear.Name = "btnSelectYear";
+            this.btnSelectYear.Size = new System.Drawing.Size(359, 42);
+            this.btnSelectYear.TabIndex = 82;
+            this.btnSelectYear.Text = "     某年腳踏車 ";
+            this.btnSelectYear.UseVisualStyleBackColor = false;
+            this.btnSelectYear.Click += new System.EventHandler(this.btnSelectYear_Click);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(519, 114);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(244, 30);
+            this.dateTimePicker1.Size = new System.Drawing.Size(244, 22);
             this.dateTimePicker1.TabIndex = 128;
             // 
-            // button10
+            // btnSelectQuarter
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button10.ForeColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(68, 215);
-            this.button10.Margin = new System.Windows.Forms.Padding(5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(359, 42);
-            this.button10.TabIndex = 83;
-            this.button10.Text = "     某季腳踏車  ? 有幾筆 ?";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnSelectQuarter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSelectQuarter.ForeColor = System.Drawing.Color.Black;
+            this.btnSelectQuarter.Location = new System.Drawing.Point(68, 215);
+            this.btnSelectQuarter.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSelectQuarter.Name = "btnSelectQuarter";
+            this.btnSelectQuarter.Size = new System.Drawing.Size(359, 42);
+            this.btnSelectQuarter.TabIndex = 83;
+            this.btnSelectQuarter.Text = "     某季腳踏車  ? 有幾筆 ?";
+            this.btnSelectQuarter.UseVisualStyleBackColor = false;
+            this.btnSelectQuarter.Click += new System.EventHandler(this.btnSelectQuarter_Click);
             // 
             // label3
             // 
@@ -315,20 +322,21 @@ namespace MyHomeWork
             this.label3.Location = new System.Drawing.Point(435, 122);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 22);
+            this.label3.Size = new System.Drawing.Size(37, 16);
             this.label3.TabIndex = 127;
             this.label3.Text = "區間:";
             // 
-            // button11
+            // btnAll
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button11.Location = new System.Drawing.Point(67, 61);
-            this.button11.Margin = new System.Windows.Forms.Padding(5);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(359, 42);
-            this.button11.TabIndex = 84;
-            this.button11.Text = "     All 腳踏車 ";
-            this.button11.UseVisualStyleBackColor = false;
+            this.btnAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAll.Location = new System.Drawing.Point(67, 61);
+            this.btnAll.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(359, 42);
+            this.btnAll.TabIndex = 84;
+            this.btnAll.Text = "     All 腳踏車 ";
+            this.btnAll.UseVisualStyleBackColor = false;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
             // label6
             // 
@@ -337,13 +345,22 @@ namespace MyHomeWork
             this.label6.Location = new System.Drawing.Point(64, 23);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(295, 22);
+            this.label6.Size = new System.Drawing.Size(196, 16);
             this.label6.TabIndex = 105;
             this.label6.Text = "LINQ to AdventureWorks DataSet";
             // 
+            // productPhotoTableAdapter1
+            // 
+            this.productPhotoTableAdapter1.ClearBeforeFill = true;
+            // 
+            // awDataSet1
+            // 
+            this.awDataSet1.DataSetName = "AWDataSet";
+            this.awDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Frm作業_2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1462, 825);
             this.Controls.Add(this.splitContainer1);
@@ -365,6 +382,7 @@ namespace MyHomeWork
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.awDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -385,13 +403,15 @@ namespace MyHomeWork
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSelectDate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSelectYear;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnSelectQuarter;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Label label6;
+        private LinqLabs.AWDataSetTableAdapters.ProductPhotoTableAdapter productPhotoTableAdapter1;
+        private LinqLabs.AWDataSet awDataSet1;
     }
 }

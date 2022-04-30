@@ -76,6 +76,11 @@
     <Compile Include="5. FrmLinq_To_Entity.Designer.cs">
       <DependentUpon>5. FrmLinq_To_Entity.cs</DependentUpon>
     </Compile>
+    <Compile Include="AWDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="作業\Frm作業_1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +131,17 @@
     <EmbeddedResource Include="作業\Frm作業_2.resx">
       <DependentUpon>Frm作業_2.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AWDataSet.xsc">
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AWDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AWDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AWDataSet.xss">
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </None>
     <None Include="NWDataSet.xsc">
       <DependentUpon>NWDataSet.xsd</DependentUpon>
     </None>
