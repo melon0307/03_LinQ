@@ -41,6 +41,7 @@ namespace MyHomeWork
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -50,12 +51,11 @@ namespace MyHomeWork
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnSelectQuarter = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAll = new System.Windows.Forms.Button();
+            this.btnSelectAll = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productPhotoTableAdapter1 = new LinqLabs.AWDataSetTableAdapters.ProductPhotoTableAdapter();
             this.awDataSet1 = new LinqLabs.AWDataSet();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -151,6 +151,7 @@ namespace MyHomeWork
             this.dataGridView1.RowTemplate.Height = 74;
             this.dataGridView1.Size = new System.Drawing.Size(599, 467);
             this.dataGridView1.TabIndex = 71;
+            this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // splitContainer2
@@ -217,7 +218,7 @@ namespace MyHomeWork
             this.splitContainer1.Panel1.Controls.Add(this.dateTimePicker1);
             this.splitContainer1.Panel1.Controls.Add(this.btnSelectQuarter);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.btnAll);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSelectAll);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             // 
             // splitContainer1.Panel2
@@ -227,6 +228,17 @@ namespace MyHomeWork
             this.splitContainer1.SplitterDistance = 299;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 135;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(449, 277);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 18);
+            this.label1.TabIndex = 137;
             // 
             // label8
             // 
@@ -328,17 +340,17 @@ namespace MyHomeWork
             this.label3.TabIndex = 127;
             this.label3.Text = "區間:";
             // 
-            // btnAll
+            // btnSelectAll
             // 
-            this.btnAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnAll.Location = new System.Drawing.Point(67, 61);
-            this.btnAll.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(359, 42);
-            this.btnAll.TabIndex = 84;
-            this.btnAll.Text = "     All 腳踏車 ";
-            this.btnAll.UseVisualStyleBackColor = false;
-            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            this.btnSelectAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSelectAll.Location = new System.Drawing.Point(67, 61);
+            this.btnSelectAll.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(359, 42);
+            this.btnSelectAll.TabIndex = 84;
+            this.btnSelectAll.Text = "     All 腳踏車 ";
+            this.btnSelectAll.UseVisualStyleBackColor = false;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // label6
             // 
@@ -359,17 +371,6 @@ namespace MyHomeWork
             // 
             this.awDataSet1.DataSetName = "AWDataSet";
             this.awDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(449, 277);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 18);
-            this.label1.TabIndex = 137;
             // 
             // Frm作業_2
             // 
@@ -422,7 +423,7 @@ namespace MyHomeWork
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnSelectQuarter;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAll;
+        private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Label label6;
         private LinqLabs.AWDataSetTableAdapters.ProductPhotoTableAdapter productPhotoTableAdapter1;
         private LinqLabs.AWDataSet awDataSet1;

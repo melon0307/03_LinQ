@@ -20,15 +20,13 @@ namespace MyHomeWork
             LoadYearToComboBox();
         }
 
-        private void btnAll_Click(object sender, EventArgs e)
-        {
-            label1.Text = null;
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {            
             this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto.ToList();
         }
 
         private void btnSelectDate_Click(object sender, EventArgs e)
-        {
-            label1.Text = null;
+        {            
             DateTime date1 = dateTimePicker1.Value < dateTimePicker2.Value ? dateTimePicker1.Value : dateTimePicker2.Value;
             DateTime date2 = dateTimePicker1.Value > dateTimePicker2.Value ? dateTimePicker1.Value : dateTimePicker2.Value;
                 
@@ -37,8 +35,7 @@ namespace MyHomeWork
         }
 
         private void btnSelectYear_Click(object sender, EventArgs e)
-        {
-            label1.Text = null;
+        {            
             int selectedYear = Int32.Parse(this.comboBox3.Text);
             this.dataGridView1.DataSource = 
                 this.awDataSet1.ProductPhoto.Where(p => p.ModifiedDate.Year == selectedYear).ToList();            
@@ -54,12 +51,9 @@ namespace MyHomeWork
         {
             int selectedYear = Int32.Parse(this.comboBox3.Text);
 
-            var q = this.awDataSet1.ProductPhoto
-                .Where(p => p.ModifiedDate.Year == selectedYear &&
-                (((p.ModifiedDate.Month) - 1 )/ 3) == (this.comboBox2.SelectedIndex)).ToList();
-
-            this.dataGridView1.DataSource = q;
-            this.label1.Text = $"共 {q.Count} 筆";
+            this.dataGridView1.DataSource = this.awDataSet1.ProductPhoto
+                .Where(p => p.ModifiedDate.Year == selectedYear
+                && (((p.ModifiedDate.Month) - 1 )/ 3) == (this.comboBox2.SelectedIndex)).ToList();             
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -67,5 +61,14 @@ namespace MyHomeWork
             byte[] bytes = (byte[]) this.dataGridView1.CurrentRow.Cells[3].Value;            
             pictureBox1.Image = Image.FromStream(new MemoryStream(bytes));
         }
+
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        {
+            label1.Text = dataGridView1.Rows.Count.ShowCount();
+        }
     }
+}
+static class MyExtension
+{
+    internal static string ShowCount(this int n) => $"共 {n} 筆";
 }
