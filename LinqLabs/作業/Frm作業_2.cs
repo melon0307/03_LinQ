@@ -37,6 +37,7 @@ namespace MyHomeWork
         private void btnSelectYear_Click(object sender, EventArgs e)
         {            
             int selectedYear = Int32.Parse(this.comboBox3.Text);
+
             this.dataGridView1.DataSource = 
                 this.awDataSet1.ProductPhoto.Where(p => p.ModifiedDate.Year == selectedYear).ToList();            
         }
@@ -58,8 +59,8 @@ namespace MyHomeWork
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            byte[] bytes = (byte[]) this.dataGridView1.CurrentRow.Cells[3].Value;            
-            pictureBox1.Image = Image.FromStream(new MemoryStream(bytes));
+            byte[] largePhoto = (byte[]) this.dataGridView1.CurrentRow.Cells[3].Value;            
+            pictureBox1.Image = Image.FromStream(new MemoryStream(largePhoto));
         }
 
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
