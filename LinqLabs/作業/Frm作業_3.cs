@@ -47,13 +47,9 @@ namespace MyHomeWork
                 }
                 else
                 {
-                    keyNode = treeView1.Nodes.Add(Key);
-                    keyNode.Name = Key;
+                    keyNode = treeView1.Nodes.Add(Key,Key);                    
                     lt.Add(Key);
-
-                    numNode = new TreeNode(number);
-                    keyNode.Nodes.Add(number);
-                    numNode.Name = number;
+                    keyNode.Nodes.Add(number,number);                   
                 }
             }
         }
