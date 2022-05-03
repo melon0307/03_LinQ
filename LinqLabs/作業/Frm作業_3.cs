@@ -83,8 +83,8 @@ namespace MyHomeWork
                 .Select(s => new { FileSize = s.Key, Count = s.Count(), Group = s }).ToList();
 
             dataGridView1.DataSource = q;
-
             treeView1.Nodes.Clear();
+
             foreach (var group in q)
             {
                 string header = $"{group.FileSize} ({group.Count})";
@@ -103,8 +103,8 @@ namespace MyHomeWork
                 .Select(s => new { Year = s.Key, Count = s.Count(), Group = s }).ToList();
 
             dataGridView1.DataSource = q;
-
             treeView1.Nodes.Clear();
+
             foreach (var group in q)
             {
                 string header = $"{group.Year} ({group.Count})";
