@@ -57,6 +57,7 @@ namespace MyHomeWork
                 }
             }
         }
+
         private string MyKey(int n)
         {
             if (n < 5)
