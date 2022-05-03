@@ -249,9 +249,7 @@ namespace Starter
                      on p.CategoryID equals c.CategoryID
                      orderby c.CategoryName ascending
                      group p by c.CategoryName into g
-                     select new { CategoryName = g.Key, Avg = $"{g.Average(p => p.UnitPrice):c2}" };
-
-            
+                     select new { CategoryName = g.Key, Avg = $"{g.Average(p => p.UnitPrice):c2}" };            
 
             this.dataGridView2.DataSource = q1.ToList();
         }
