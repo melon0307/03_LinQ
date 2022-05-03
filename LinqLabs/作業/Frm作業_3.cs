@@ -20,7 +20,7 @@ namespace MyHomeWork
 
         private void btnIntNoLinq_Click(object sender, EventArgs e)
         {
-            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 2, 4, 6, 8, 10 };
             List<string> lt = new List<string>();
             TreeNode keyNode = new TreeNode();
             TreeNode numNode = new TreeNode();
@@ -31,14 +31,18 @@ namespace MyHomeWork
             {
                 string Key = MyKey(nums[i]);
                 string number = nums[i].ToString();
+
                 if (lt.Contains(Key))
                 {
-                    if (!lt.Contains(number))
+                    for (int j = 0; j < this.treeView1.Nodes.Count; j++)
                     {
-                        numNode = new TreeNode(number);
-                        keyNode.Nodes.Add(number);
-                        numNode.Name = number;
-                        lt.Add(number);
+                        if (this.treeView1.Nodes[j].Name == Key)
+                        {
+                            numNode = new TreeNode(number);
+                            this.treeView1.Nodes[j].Nodes.Add(number);
+                            numNode.Name = number;
+                            this.treeView1.Nodes[j].Text = $"{Key} ({this.treeView1.Nodes[j].GetNodeCount(true)})";
+                        }                       
                     }
                 }
                 else
@@ -49,10 +53,8 @@ namespace MyHomeWork
 
                     numNode = new TreeNode(number);
                     keyNode.Nodes.Add(number);
-                    numNode.Name = number;
-                    lt.Add(number);
-                }
-                keyNode.Text = $"{Key} ({keyNode.Nodes.Count})";
+                    numNode.Name = number;                    
+                }                
             }
         }
 
