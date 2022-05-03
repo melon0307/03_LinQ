@@ -43,14 +43,14 @@ namespace MyHomeWork
             this.label3 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnIntNoLinq = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnGroupByCreationYear = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
+            this.btnGroupByFileSize = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
@@ -215,14 +215,14 @@ namespace MyHomeWork
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnIntNoLinq);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btnGroupByCreationYear);
             this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button38);
+            this.panel1.Controls.Add(this.btnGroupByFileSize);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button15);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -238,7 +238,7 @@ namespace MyHomeWork
             this.label3.Location = new System.Drawing.Point(11, 296);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(215, 22);
+            this.label3.Size = new System.Drawing.Size(144, 16);
             this.label3.TabIndex = 134;
             this.label3.Text = "LINQ to Northwind Entity";
             // 
@@ -259,21 +259,22 @@ namespace MyHomeWork
             this.label4.Location = new System.Drawing.Point(4, 22);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 22);
+            this.label4.Size = new System.Drawing.Size(98, 16);
             this.label4.TabIndex = 126;
             this.label4.Text = "LINQ - GroupBy";
             // 
-            // button4
+            // btnIntNoLinq
             // 
-            this.button4.BackColor = System.Drawing.Color.Blue;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(5, 54);
-            this.button4.Margin = new System.Windows.Forms.Padding(5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(506, 42);
-            this.button4.TabIndex = 85;
-            this.button4.Text = "int[]  分三群 - No LINQ";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnIntNoLinq.BackColor = System.Drawing.Color.Blue;
+            this.btnIntNoLinq.ForeColor = System.Drawing.Color.White;
+            this.btnIntNoLinq.Location = new System.Drawing.Point(5, 54);
+            this.btnIntNoLinq.Margin = new System.Windows.Forms.Padding(5);
+            this.btnIntNoLinq.Name = "btnIntNoLinq";
+            this.btnIntNoLinq.Size = new System.Drawing.Size(506, 42);
+            this.btnIntNoLinq.TabIndex = 85;
+            this.btnIntNoLinq.Text = "int[]  分三群 - No LINQ";
+            this.btnIntNoLinq.UseVisualStyleBackColor = false;
+            this.btnIntNoLinq.Click += new System.EventHandler(this.btnIntNoLinq_Click);
             // 
             // button9
             // 
@@ -314,21 +315,22 @@ namespace MyHomeWork
             this.label1.Location = new System.Drawing.Point(10, 123);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 22);
+            this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 128;
             this.label1.Text = "LINQ to FileInfo[]";
             // 
-            // button6
+            // btnGroupByCreationYear
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(7, 202);
-            this.button6.Margin = new System.Windows.Forms.Padding(5);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(506, 42);
-            this.button6.TabIndex = 93;
-            this.button6.Text = "  依 年 分組檔案 (大=>小)";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnGroupByCreationYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnGroupByCreationYear.ForeColor = System.Drawing.Color.Black;
+            this.btnGroupByCreationYear.Location = new System.Drawing.Point(7, 202);
+            this.btnGroupByCreationYear.Margin = new System.Windows.Forms.Padding(5);
+            this.btnGroupByCreationYear.Name = "btnGroupByCreationYear";
+            this.btnGroupByCreationYear.Size = new System.Drawing.Size(506, 42);
+            this.btnGroupByCreationYear.TabIndex = 93;
+            this.btnGroupByCreationYear.Text = "  依 年 分組檔案 (大=>小)";
+            this.btnGroupByCreationYear.UseVisualStyleBackColor = false;
+            this.btnGroupByCreationYear.Click += new System.EventHandler(this.btnGroupByCreationYear_Click);
             // 
             // button8
             // 
@@ -342,17 +344,18 @@ namespace MyHomeWork
             this.button8.Text = "NW Products 低中高 價產品 ";
             this.button8.UseVisualStyleBackColor = false;
             // 
-            // button38
+            // btnGroupByFileSize
             // 
-            this.button38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button38.ForeColor = System.Drawing.Color.Black;
-            this.button38.Location = new System.Drawing.Point(12, 150);
-            this.button38.Margin = new System.Windows.Forms.Padding(5);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(506, 42);
-            this.button38.TabIndex = 95;
-            this.button38.Text = "依 檔案大小 分組檔案 (大=>小)";
-            this.button38.UseVisualStyleBackColor = false;
+            this.btnGroupByFileSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnGroupByFileSize.ForeColor = System.Drawing.Color.Black;
+            this.btnGroupByFileSize.Location = new System.Drawing.Point(12, 150);
+            this.btnGroupByFileSize.Margin = new System.Windows.Forms.Padding(5);
+            this.btnGroupByFileSize.Name = "btnGroupByFileSize";
+            this.btnGroupByFileSize.Size = new System.Drawing.Size(506, 42);
+            this.btnGroupByFileSize.TabIndex = 95;
+            this.btnGroupByFileSize.Text = "依 檔案大小 分組檔案 (大=>小)";
+            this.btnGroupByFileSize.UseVisualStyleBackColor = false;
+            this.btnGroupByFileSize.Click += new System.EventHandler(this.btnGroupByFileSize_Click);
             // 
             // button1
             // 
@@ -378,7 +381,7 @@ namespace MyHomeWork
             // 
             // Frm作業_3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 794);
             this.Controls.Add(this.tableLayoutPanel3);
@@ -418,14 +421,14 @@ namespace MyHomeWork
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnIntNoLinq;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnGroupByCreationYear;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button btnGroupByFileSize;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button15;
     }
