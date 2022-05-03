@@ -13,7 +13,7 @@ namespace Starter
     {
         public FrmLINQ架構介紹_InsideLINQ()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void button30_Click(object sender, EventArgs e)
@@ -43,6 +43,32 @@ namespace Starter
 
             var q = this.nwDataSet1.Products.OrderByDescending(p => p.UnitsInStock).Take(5).ToList();
             dataGridView1.DataSource = q;
+        }
+
+        private void btnAggregation_Click(object sender, EventArgs e)
+        {
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            this.listBox1.Items.Add("sum = "+nums.Sum());
+            this.listBox1.Items.Add("min = " + nums.Min());
+            this.listBox1.Items.Add("max = " + nums.Max());
+            this.listBox1.Items.Add("count = " + nums.Count());
+            this.listBox1.Items.Add("avg = " + nums.Average());
+
+            this.listBox1.Items.Add("================");
+
+            this.listBox1.Items.Add("evenSum = "+nums.Where(n => n % 2 == 0).Sum());
+            this.listBox1.Items.Add("evenMin = " + nums.Where(n => n % 2 == 0).Min());
+            this.listBox1.Items.Add("evenMax = " + nums.Where(n => n % 2 == 0).Max());
+            this.listBox1.Items.Add("evenCount = " + nums.Where(n => n % 2 == 0).Count());
+            this.listBox1.Items.Add("evenAvg = " + nums.Where(n => n % 2 == 0).Average());
+
+            this.listBox1.Items.Add("================");
+
+            this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
+            this.listBox1.Items.Add($"max UnitPrice = {this.nwDataSet1.Products.Max(p => p.UnitPrice):c2}");
+            this.listBox1.Items.Add($"min UnitPrice = {this.nwDataSet1.Products.Min(p => p.UnitPrice):c2}");
+            this.listBox1.Items.Add($"Sum UnitPrice = {this.nwDataSet1.Products.Sum(p => p.UnitPrice):c2}");
+            this.listBox1.Items.Add($"Avg UnitPrice = {this.nwDataSet1.Products.Average(p => p.UnitPrice):c2}");
         }
     }
 }

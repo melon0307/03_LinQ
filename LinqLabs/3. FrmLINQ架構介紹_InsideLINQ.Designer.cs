@@ -58,6 +58,7 @@
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.nwDataSet1 = new LinqLabs.NWDataSet();
             this.productsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter();
+            this.btnAggregation = new System.Windows.Forms.Button();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -245,6 +246,7 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.btnAggregation);
             this.groupBox13.Controls.Add(this.button13);
             this.groupBox13.Controls.Add(this.button31);
             this.groupBox13.ForeColor = System.Drawing.Color.Black;
@@ -252,7 +254,7 @@
             this.groupBox13.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox13.Size = new System.Drawing.Size(466, 232);
+            this.groupBox13.Size = new System.Drawing.Size(511, 232);
             this.groupBox13.TabIndex = 19;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Linq to Entity";
@@ -482,6 +484,16 @@
             // 
             this.productsTableAdapter1.ClearBeforeFill = true;
             // 
+            // btnAggregation
+            // 
+            this.btnAggregation.Location = new System.Drawing.Point(383, 33);
+            this.btnAggregation.Name = "btnAggregation";
+            this.btnAggregation.Size = new System.Drawing.Size(108, 48);
+            this.btnAggregation.TabIndex = 15;
+            this.btnAggregation.Text = "Aggre.";
+            this.btnAggregation.UseVisualStyleBackColor = true;
+            this.btnAggregation.Click += new System.EventHandler(this.btnAggregation_Click);
+            // 
             // FrmLINQ架構介紹_InsideLINQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -558,6 +570,7 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private LinqLabs.NWDataSet nwDataSet1;
         private LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
+        private System.Windows.Forms.Button btnAggregation;
     }
 }
 
