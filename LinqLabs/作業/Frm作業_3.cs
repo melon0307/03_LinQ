@@ -24,7 +24,7 @@ namespace MyHomeWork
             List<string> lt = new List<string>();
             TreeNode keyNode = new TreeNode();
             TreeNode numNode = new TreeNode();
-            
+
             treeView1.Nodes.Clear();
             this.dataGridView1.DataSource = null;
             for (int i = 0; i < nums.Length; i++)
@@ -42,7 +42,7 @@ namespace MyHomeWork
                             this.treeView1.Nodes[j].Nodes.Add(number);
                             numNode.Name = number;
                             this.treeView1.Nodes[j].Text = $"{Key} ({this.treeView1.Nodes[j].GetNodeCount(true)})";
-                        }                       
+                        }
                     }
                 }
                 else
@@ -53,11 +53,10 @@ namespace MyHomeWork
 
                     numNode = new TreeNode(number);
                     keyNode.Nodes.Add(number);
-                    numNode.Name = number;                    
-                }                
+                    numNode.Name = number;
+                }
             }
         }
-
         private string MyKey(int n)
         {
             if (n < 5)
@@ -81,40 +80,40 @@ namespace MyHomeWork
         private void btnGroupByFileSize_Click(object sender, EventArgs e)
         {
             FileInfo[] files = new DirectoryInfo(@"c:\windows").GetFiles();
-            var q = files.GroupBy(f => MySizeKey(f.Length)).ToList();
+            var q = files.GroupBy(f => MySizeKey(f.Length))
+                .Select(s => new { Key = s.Key, Count = s.Count(), Group = s }).ToList();
             dataGridView1.DataSource = q;
 
             treeView1.Nodes.Clear();
             foreach (var group in q)
             {
-                TreeNode nodes = this.treeView1.Nodes.Add(group.Key.ToString());
+                string header = $"{group.Key} ({group.Count})";
+                TreeNode nodes = this.treeView1.Nodes.Add(group.Key.ToString(),header);
 
-                foreach (FileInfo item in group)
+                foreach (FileInfo item in group.Group)
                 {
                     nodes.Nodes.Add(item.ToString());
-                }
-
-                nodes.Text = $"{group.Key} ({nodes.Nodes.Count})";
+                }                
             }
         }
 
         private void btnGroupByCreationYear_Click(object sender, EventArgs e)
         {
             FileInfo[] files = new DirectoryInfo(@"c:\windows").GetFiles();
-            var q = files.GroupBy(f => f.CreationTime.Year).OrderBy(o=>o.Key).ToList();
+            var q = files.GroupBy(f => f.CreationTime.Year).OrderBy(o => o.Key)
+                .Select(s => new { Key = s.Key, Count = s.Count(), Group = s }).ToList();
             dataGridView1.DataSource = q;
 
             treeView1.Nodes.Clear();
             foreach (var group in q)
             {
-                TreeNode nodes = this.treeView1.Nodes.Add(group.Key.ToString());
+                string header = $"{group.Key} ({group.Count})";
+                TreeNode nodes = this.treeView1.Nodes.Add(group.Key.ToString(),header);
 
-                foreach (FileInfo item in group)
+                foreach (FileInfo item in group.Group)
                 {
                     nodes.Nodes.Add(item.ToString());
-                }
-
-                nodes.Text = $"{group.Key} ({nodes.Nodes.Count})";
+                }                
             }
         }
     }
