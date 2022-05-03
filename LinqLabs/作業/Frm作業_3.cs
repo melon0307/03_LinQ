@@ -81,14 +81,14 @@ namespace MyHomeWork
         {
             FileInfo[] files = new DirectoryInfo(@"c:\windows").GetFiles();
             var q = files.GroupBy(f => MySizeKey(f.Length))
-                .Select(s => new { Key = s.Key, Count = s.Count(), Group = s }).ToList();
+                .Select(s => new { FileSize = s.Key, Count = s.Count(), Group = s }).ToList();
             dataGridView1.DataSource = q;
 
             treeView1.Nodes.Clear();
             foreach (var group in q)
             {
-                string header = $"{group.Key} ({group.Count})";
-                TreeNode nodes = this.treeView1.Nodes.Add(group.Key.ToString(),header);
+                string header = $"{group.FileSize} ({group.Count})";
+                TreeNode nodes = this.treeView1.Nodes.Add(group.FileSize.ToString(),header);
 
                 foreach (FileInfo item in group.Group)
                 {
@@ -101,14 +101,14 @@ namespace MyHomeWork
         {
             FileInfo[] files = new DirectoryInfo(@"c:\windows").GetFiles();
             var q = files.GroupBy(f => f.CreationTime.Year).OrderBy(o => o.Key)
-                .Select(s => new { Key = s.Key, Count = s.Count(), Group = s }).ToList();
+                .Select(s => new { Year = s.Key, Count = s.Count(), Group = s }).ToList();
             dataGridView1.DataSource = q;
 
             treeView1.Nodes.Clear();
             foreach (var group in q)
             {
-                string header = $"{group.Key} ({group.Count})";
-                TreeNode nodes = this.treeView1.Nodes.Add(group.Key.ToString(),header);
+                string header = $"{group.Year} ({group.Count})";
+                TreeNode nodes = this.treeView1.Nodes.Add(group.Year.ToString(),header);
 
                 foreach (FileInfo item in group.Group)
                 {
