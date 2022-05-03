@@ -24,12 +24,14 @@ namespace MyHomeWork
             List<string> lt = new List<string>();
             TreeNode keyNode = new TreeNode();
             TreeNode numNode = new TreeNode();
-
+            
             treeView1.Nodes.Clear();
+            this.dataGridView1.DataSource = null;
             for (int i = 0; i < nums.Length; i++)
             {
+                string Key = MyKey(nums[i]);
                 string number = nums[i].ToString();
-                if (lt.Contains(MyKey(nums[i])))
+                if (lt.Contains(Key))
                 {
                     if (!lt.Contains(number))
                     {
@@ -41,9 +43,9 @@ namespace MyHomeWork
                 }
                 else
                 {
-                    keyNode = treeView1.Nodes.Add(MyKey(nums[i]));
-                    keyNode.Name = MyKey(nums[i]);
-                    lt.Add(MyKey(nums[i]));
+                    keyNode = treeView1.Nodes.Add(Key);
+                    keyNode.Name = Key;
+                    lt.Add(Key);
 
                     numNode = new TreeNode(number);
                     keyNode.Nodes.Add(number);
@@ -52,7 +54,6 @@ namespace MyHomeWork
                 }
                 keyNode.Text = $"{MyKey(nums[i])} ({keyNode.Nodes.Count})";
             }
-
         }
 
         private string MyKey(int n)
