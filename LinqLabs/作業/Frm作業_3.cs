@@ -20,35 +20,17 @@ namespace MyHomeWork
 
         private void btnIntNoLinq_Click(object sender, EventArgs e)
         {
-            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 2, 4, 6, 8, 10 };
-            List<string> lt = new List<string>();
-            TreeNode keyNode = new TreeNode();
-
-            this.dataGridView1.DataSource = null;
-            treeView1.Nodes.Clear();            
-
-            for (int i = 0; i < nums.Length; i++)
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 2, 4, 6, 8, 10 };            
+            
+            foreach (int n in nums)
             {
-                string Key = MyKey(nums[i]);
-                string number = nums[i].ToString();
-
-                if (lt.Contains(Key))
+                string Key = MyKey(n);
+                if (this.treeView1.Nodes[Key] == null)
                 {
-                    for (int j = 0; j < this.treeView1.Nodes.Count; j++)
-                    {
-                        if (this.treeView1.Nodes[j].Name == Key)
-                        {                            
-                            this.treeView1.Nodes[j].Nodes.Add(number,number);                            
-                            this.treeView1.Nodes[j].Text = $"{Key} ({this.treeView1.Nodes[j].GetNodeCount(true)})";
-                        }
-                    }
+                    this.treeView1.Nodes.Add(Key, Key);
                 }
-                else
-                {
-                    keyNode = treeView1.Nodes.Add(Key,Key);                    
-                    lt.Add(Key);
-                    keyNode.Nodes.Add(number,number);                   
-                }
+                this.treeView1.Nodes[Key].Nodes.Add(n.ToString());
+                this.treeView1.Nodes[Key].Text = $"{Key} ({this.treeView1.Nodes[Key].GetNodeCount(true)})";
             }
         }
 
