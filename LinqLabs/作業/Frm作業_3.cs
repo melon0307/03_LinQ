@@ -37,10 +37,8 @@ namespace MyHomeWork
                     for (int j = 0; j < this.treeView1.Nodes.Count; j++)
                     {
                         if (this.treeView1.Nodes[j].Name == Key)
-                        {
-                            numNode = new TreeNode(number);
-                            this.treeView1.Nodes[j].Nodes.Add(number);
-                            numNode.Name = number;
+                        {                            
+                            this.treeView1.Nodes[j].Nodes.Add(number,number);                            
                             this.treeView1.Nodes[j].Text = $"{Key} ({this.treeView1.Nodes[j].GetNodeCount(true)})";
                         }
                     }
