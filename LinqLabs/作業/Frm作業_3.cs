@@ -78,10 +78,10 @@ namespace MyHomeWork
         }
 
         private void btnGroupByFileSize_Click(object sender, EventArgs e)
-        {
-            FileInfo[] files = new DirectoryInfo(@"c:\windows").GetFiles();
-            var q = files.GroupBy(f => MySizeKey(f.Length))
+        {            
+            var q = new DirectoryInfo(@"c:\windows").GetFiles().GroupBy(f => MySizeKey(f.Length))
                 .Select(s => new { FileSize = s.Key, Count = s.Count(), Group = s }).ToList();
+
             dataGridView1.DataSource = q;
 
             treeView1.Nodes.Clear();
@@ -98,10 +98,10 @@ namespace MyHomeWork
         }
 
         private void btnGroupByCreationYear_Click(object sender, EventArgs e)
-        {
-            FileInfo[] files = new DirectoryInfo(@"c:\windows").GetFiles();
-            var q = files.GroupBy(f => f.CreationTime.Year).OrderBy(o => o.Key)
+        {            
+            var q = new DirectoryInfo(@"c:\windows").GetFiles().GroupBy(f => f.CreationTime.Year).OrderBy(o => o.Key)
                 .Select(s => new { Year = s.Key, Count = s.Count(), Group = s }).ToList();
+
             dataGridView1.DataSource = q;
 
             treeView1.Nodes.Clear();
