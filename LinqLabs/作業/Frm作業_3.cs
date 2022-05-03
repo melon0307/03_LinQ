@@ -52,7 +52,7 @@ namespace MyHomeWork
                     numNode.Name = number;
                     lt.Add(number);
                 }
-                keyNode.Text = $"{MyKey(nums[i])} ({keyNode.Nodes.Count})";
+                keyNode.Text = $"{Key} ({keyNode.Nodes.Count})";
             }
         }
 
