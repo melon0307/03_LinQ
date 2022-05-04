@@ -41,18 +41,18 @@ namespace MyHomeWork
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnOrdersGroupByYearMonth = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnIntNoLinq = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnTop5UnitPrice = new System.Windows.Forms.Button();
+            this.btnSalesFigures = new System.Windows.Forms.Button();
+            this.btnAnyUnitPriceOver300 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGroupByCreationYear = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnProductPrice = new System.Windows.Forms.Button();
             this.btnGroupByFileSize = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.btnBest5Employees = new System.Windows.Forms.Button();
+            this.btnOrdersGroupByYear = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
@@ -213,18 +213,18 @@ namespace MyHomeWork
             // panel1
             // 
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.button10);
+            this.panel1.Controls.Add(this.btnOrdersGroupByYearMonth);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnIntNoLinq);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.btnTop5UnitPrice);
+            this.panel1.Controls.Add(this.btnSalesFigures);
+            this.panel1.Controls.Add(this.btnAnyUnitPriceOver300);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnGroupByCreationYear);
-            this.panel1.Controls.Add(this.button8);
+            this.panel1.Controls.Add(this.btnProductPrice);
             this.panel1.Controls.Add(this.btnGroupByFileSize);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button15);
+            this.panel1.Controls.Add(this.btnBest5Employees);
+            this.panel1.Controls.Add(this.btnOrdersGroupByYear);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -238,20 +238,21 @@ namespace MyHomeWork
             this.label3.Location = new System.Drawing.Point(11, 296);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 16);
+            this.label3.Size = new System.Drawing.Size(163, 15);
             this.label3.TabIndex = 134;
             this.label3.Text = "LINQ to Northwind Entity";
             // 
-            // button10
+            // btnOrdersGroupByYearMonth
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button10.Location = new System.Drawing.Point(12, 430);
-            this.button10.Margin = new System.Windows.Forms.Padding(5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(506, 42);
-            this.button10.TabIndex = 133;
-            this.button10.Text = " Orders -  Group by 年 / 月";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnOrdersGroupByYearMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnOrdersGroupByYearMonth.Location = new System.Drawing.Point(12, 430);
+            this.btnOrdersGroupByYearMonth.Margin = new System.Windows.Forms.Padding(5);
+            this.btnOrdersGroupByYearMonth.Name = "btnOrdersGroupByYearMonth";
+            this.btnOrdersGroupByYearMonth.Size = new System.Drawing.Size(506, 42);
+            this.btnOrdersGroupByYearMonth.TabIndex = 133;
+            this.btnOrdersGroupByYearMonth.Text = " Orders -  Group by 年 / 月";
+            this.btnOrdersGroupByYearMonth.UseVisualStyleBackColor = false;
+            this.btnOrdersGroupByYearMonth.Click += new System.EventHandler(this.btnOrdersGroupByYearMonth_Click);
             // 
             // label4
             // 
@@ -259,7 +260,7 @@ namespace MyHomeWork
             this.label4.Location = new System.Drawing.Point(4, 22);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 16);
+            this.label4.Size = new System.Drawing.Size(106, 15);
             this.label4.TabIndex = 126;
             this.label4.Text = "LINQ - GroupBy";
             // 
@@ -276,38 +277,41 @@ namespace MyHomeWork
             this.btnIntNoLinq.UseVisualStyleBackColor = false;
             this.btnIntNoLinq.Click += new System.EventHandler(this.btnIntNoLinq_Click);
             // 
-            // button9
+            // btnTop5UnitPrice
             // 
-            this.button9.BackColor = System.Drawing.Color.LimeGreen;
-            this.button9.Location = new System.Drawing.Point(8, 648);
-            this.button9.Margin = new System.Windows.Forms.Padding(5);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(538, 42);
-            this.button9.TabIndex = 91;
-            this.button9.Text = "     NW 產品最高單價前 5 筆 (包括類別名稱)";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnTop5UnitPrice.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnTop5UnitPrice.Location = new System.Drawing.Point(8, 648);
+            this.btnTop5UnitPrice.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTop5UnitPrice.Name = "btnTop5UnitPrice";
+            this.btnTop5UnitPrice.Size = new System.Drawing.Size(538, 42);
+            this.btnTop5UnitPrice.TabIndex = 91;
+            this.btnTop5UnitPrice.Text = "     NW 產品最高單價前 5 筆 (包括類別名稱)";
+            this.btnTop5UnitPrice.UseVisualStyleBackColor = false;
+            this.btnTop5UnitPrice.Click += new System.EventHandler(this.btnTop5UnitPrice_Click);
             // 
-            // button2
+            // btnSalesFigures
             // 
-            this.button2.BackColor = System.Drawing.Color.LimeGreen;
-            this.button2.Location = new System.Drawing.Point(7, 544);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(538, 44);
-            this.button2.TabIndex = 129;
-            this.button2.Text = "總銷售金額";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSalesFigures.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSalesFigures.Location = new System.Drawing.Point(7, 544);
+            this.btnSalesFigures.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalesFigures.Name = "btnSalesFigures";
+            this.btnSalesFigures.Size = new System.Drawing.Size(538, 44);
+            this.btnSalesFigures.TabIndex = 129;
+            this.btnSalesFigures.Text = "總銷售金額";
+            this.btnSalesFigures.UseVisualStyleBackColor = false;
+            this.btnSalesFigures.Click += new System.EventHandler(this.btnSalesFigures_Click);
             // 
-            // button7
+            // btnAnyUnitPriceOver300
             // 
-            this.button7.BackColor = System.Drawing.Color.LimeGreen;
-            this.button7.Location = new System.Drawing.Point(8, 701);
-            this.button7.Margin = new System.Windows.Forms.Padding(5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(538, 42);
-            this.button7.TabIndex = 92;
-            this.button7.Text = "     NW 產品有任何一筆單價大於300 ?";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnAnyUnitPriceOver300.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAnyUnitPriceOver300.Location = new System.Drawing.Point(8, 701);
+            this.btnAnyUnitPriceOver300.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAnyUnitPriceOver300.Name = "btnAnyUnitPriceOver300";
+            this.btnAnyUnitPriceOver300.Size = new System.Drawing.Size(538, 42);
+            this.btnAnyUnitPriceOver300.TabIndex = 92;
+            this.btnAnyUnitPriceOver300.Text = "     NW 產品有任何一筆單價大於300 ?";
+            this.btnAnyUnitPriceOver300.UseVisualStyleBackColor = false;
+            this.btnAnyUnitPriceOver300.Click += new System.EventHandler(this.btnAnyUnitPriceOver300_Click);
             // 
             // label1
             // 
@@ -315,7 +319,7 @@ namespace MyHomeWork
             this.label1.Location = new System.Drawing.Point(10, 123);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(115, 15);
             this.label1.TabIndex = 128;
             this.label1.Text = "LINQ to FileInfo[]";
             // 
@@ -332,17 +336,18 @@ namespace MyHomeWork
             this.btnGroupByCreationYear.UseVisualStyleBackColor = false;
             this.btnGroupByCreationYear.Click += new System.EventHandler(this.btnGroupByCreationYear_Click);
             // 
-            // button8
+            // btnProductPrice
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button8.ForeColor = System.Drawing.Color.Black;
-            this.button8.Location = new System.Drawing.Point(9, 328);
-            this.button8.Margin = new System.Windows.Forms.Padding(5);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(506, 42);
-            this.button8.TabIndex = 94;
-            this.button8.Text = "NW Products 低中高 價產品 ";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnProductPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnProductPrice.ForeColor = System.Drawing.Color.Black;
+            this.btnProductPrice.Location = new System.Drawing.Point(9, 328);
+            this.btnProductPrice.Margin = new System.Windows.Forms.Padding(5);
+            this.btnProductPrice.Name = "btnProductPrice";
+            this.btnProductPrice.Size = new System.Drawing.Size(506, 42);
+            this.btnProductPrice.TabIndex = 94;
+            this.btnProductPrice.Text = "NW Products 低中高 價產品 ";
+            this.btnProductPrice.UseVisualStyleBackColor = false;
+            this.btnProductPrice.Click += new System.EventHandler(this.btnProductPrice_Click);
             // 
             // btnGroupByFileSize
             // 
@@ -357,35 +362,37 @@ namespace MyHomeWork
             this.btnGroupByFileSize.UseVisualStyleBackColor = false;
             this.btnGroupByFileSize.Click += new System.EventHandler(this.btnGroupByFileSize_Click);
             // 
-            // button1
+            // btnBest5Employees
             // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.Location = new System.Drawing.Point(8, 595);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(538, 42);
-            this.button1.TabIndex = 125;
-            this.button1.Text = "銷售最好的top 5業務員";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnBest5Employees.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnBest5Employees.Location = new System.Drawing.Point(8, 595);
+            this.btnBest5Employees.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBest5Employees.Name = "btnBest5Employees";
+            this.btnBest5Employees.Size = new System.Drawing.Size(538, 42);
+            this.btnBest5Employees.TabIndex = 125;
+            this.btnBest5Employees.Text = "銷售最好的top 5業務員";
+            this.btnBest5Employees.UseVisualStyleBackColor = false;
+            this.btnBest5Employees.Click += new System.EventHandler(this.btnBest5Employees_Click);
             // 
-            // button15
+            // btnOrdersGroupByYear
             // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button15.Location = new System.Drawing.Point(12, 379);
-            this.button15.Margin = new System.Windows.Forms.Padding(5);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(506, 42);
-            this.button15.TabIndex = 121;
-            this.button15.Text = " Orders -  Group by 年";
-            this.button15.UseVisualStyleBackColor = false;
+            this.btnOrdersGroupByYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnOrdersGroupByYear.Location = new System.Drawing.Point(12, 379);
+            this.btnOrdersGroupByYear.Margin = new System.Windows.Forms.Padding(5);
+            this.btnOrdersGroupByYear.Name = "btnOrdersGroupByYear";
+            this.btnOrdersGroupByYear.Size = new System.Drawing.Size(506, 42);
+            this.btnOrdersGroupByYear.TabIndex = 121;
+            this.btnOrdersGroupByYear.Text = " Orders -  Group by 年";
+            this.btnOrdersGroupByYear.UseVisualStyleBackColor = false;
+            this.btnOrdersGroupByYear.Click += new System.EventHandler(this.btnOrdersGroupByYear_Click);
             // 
             // Frm作業_3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1610, 794);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm作業_3";
             this.Text = "Frm_作業3";
@@ -419,17 +426,17 @@ namespace MyHomeWork
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnOrdersGroupByYearMonth;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnIntNoLinq;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnTop5UnitPrice;
+        private System.Windows.Forms.Button btnSalesFigures;
+        private System.Windows.Forms.Button btnAnyUnitPriceOver300;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGroupByCreationYear;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnProductPrice;
         private System.Windows.Forms.Button btnGroupByFileSize;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btnBest5Employees;
+        private System.Windows.Forms.Button btnOrdersGroupByYear;
     }
 }
