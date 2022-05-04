@@ -12,6 +12,7 @@ namespace LinqLabs
 {
     public partial class Frm考試 : Form
     {
+        NorthwindEntities dbContext = new NorthwindEntities();
         public Frm考試()
         {
             InitializeComponent();
@@ -95,6 +96,29 @@ namespace LinqLabs
 
         private void button34_Click(object sender, EventArgs e)
         {
+            var q = this.dbContext.Order_Details.AsEnumerable()
+                .Select(o => new { Year = o.Order.OrderDate.Value.Year, SalesFigures = o.UnitPrice * o.Quantity })
+                .GroupBy(g => g.Year)
+                .Select(s => new { Year = s.Key, SalesFigures = $"{s.Sum(o => o.SalesFigures):c2}" })
+                .OrderByDescending(s => s.SalesFigures);
+
+            listBox1.Items.Add("年度最高銷售金額: " + q.First().SalesFigures);
+            listBox1.Items.Add("年度最低銷售金額: " + q.Last().SalesFigures);
+            listBox1.Items.Add("================================");
+            listBox1.Items.Add("哪一年總銷售最好: " + q.First().Year);
+            listBox1.Items.Add("哪一年總銷售最不好: " + q.Last().Year);
+            listBox1.Items.Add("================================");
+
+            var query = this.dbContext.Order_Details.AsEnumerable()
+                .Select(o => new { Month = o.Order.OrderDate.Value.Year + "年 " + o.Order.OrderDate.Value.Month + "月", SalesFigures = o.UnitPrice * o.Quantity })
+                .GroupBy(g => g.Month)
+                .Select(s => new { Month = s.Key, SalesFigures = $"{s.Sum(o => o.SalesFigures):c2}" })
+                .OrderByDescending(s => s.SalesFigures);
+
+            listBox1.Items.Add("哪一個月總銷售最好: " + query.First().Month);
+            listBox1.Items.Add("哪一個月總銷售最不好: " + query.Last().Month);
+
+
             // 年度最高銷售金額 年度最低銷售金額
             // 那一年總銷售最好 ? 那一年總銷售最不好 ?  
             // 那一個月總銷售最好 ? 那一個月總銷售最不好 ?
@@ -103,6 +127,6 @@ namespace LinqLabs
             // 每月 總銷售分析 圖
         }
 
-      
+
     }
 }
