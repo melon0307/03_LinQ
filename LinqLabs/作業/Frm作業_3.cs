@@ -162,7 +162,7 @@ namespace MyHomeWork
         private void btnOrdersGroupByYearMonth_Click(object sender, EventArgs e)
         {
             var q = this.dbContext.Orders.AsEnumerable().OrderBy(o => o.OrderDate)
-                .GroupBy(o => new { o.OrderDate.Value.Year, o.OrderDate.Value.Month })
+                .GroupBy(o => o.OrderDate.Value.ToString("yyyy-MM"))
                 .Select(s => new { Date = s.Key, Count = s.Count(), Group = s });
 
             ClearData();
