@@ -213,7 +213,7 @@ namespace MyHomeWork
         private void btnAnyUnitPriceOver300_Click(object sender, EventArgs e)
         {
             bool result = this.dbContext.Products.AsEnumerable().Any(p => p.UnitPrice > 300);
-            MessageBox.Show("NW 產品有任何一筆單價大於300 ??  " + result);
+            MessageBox.Show("NW 產品有任何一筆單價大於300 ??  "+ result);
         }
     }
 }
