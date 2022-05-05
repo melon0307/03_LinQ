@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LinqLabs
@@ -32,14 +28,15 @@ namespace LinqLabs
         }
 
         List<Student> students_scores;
+        List<Student> students_scores2 = new List<Student>();
 
         public class Student
         {
             public string Name { get; set; }
-            public string Class { get;  set; }
+            public string Class { get; set; }
             public int Chi { get; set; }
             public int Eng { get; internal set; }
-            public int Math { get;  set; }
+            public int Math { get; set; }
             public string Gender { get; set; }
         }
 
@@ -99,25 +96,7 @@ namespace LinqLabs
             }
         }
 
-        private int Max(int s1,int s2,int s3)
-        {
-            int result = s1;
-            if (result < s2)
-                result = s2;
-            else if (result < s3)
-                result = s3;
-            return result;
-        }
 
-        private int Min(int s1, int s2, int s3)
-        {
-            int result = s1;
-            if (result > s2)
-                result = s2;
-            else if (result > s3)
-                result = s3;
-            return result;
-        }
 
         private void button37_Click(object sender, EventArgs e)
         {
@@ -168,11 +147,17 @@ namespace LinqLabs
             // split=> 分成 三群 '待加強'(60~69) '佳'(70~89) '優良'(90~100) 
             // print 每一群是哪幾個 ? (每一群 sort by 分數 descending)
 
-            List<Student> students_scores2 = new List<Student>();
+            ClearData();
+            students_scores2.Clear();
             for (int i = 0; i < 100; i++)
             {
-                students_scores2.Add(new Student {Name = i.ToString(),Chi = rd.Next(20,101), })
+                students_scores2.Add(new Student { Name = i.ToString(), Chi = rd.Next(50, 101) });
             }
+
+            this.dataGridView1.DataSource = students_scores2
+                .Select(s => new { Name = s.Name, Split = MySplit(s.Chi), Chi = s.Chi })
+                .OrderByDescending(o => o.Chi)
+                .ToList();
         }
 
         private void button35_Click(object sender, EventArgs e)
@@ -192,6 +177,14 @@ namespace LinqLabs
             // 73     3.00%
             // 74     3.00%
             // 75     3.00%
+
+            this.dataGridView1.DataSource = this.students_scores2.GroupBy(g => g.Chi)
+                .Select(s => new
+                {
+                    Score = s.Key,
+                    Count = s.Count(),
+                    Percentage = $"{((double)s.Count()/ students_scores2.Count)*100:f2}%"
+                }).OrderByDescending(o=>o.Percentage).ToList();
         }
 
         private void button34_Click(object sender, EventArgs e)
@@ -200,7 +193,7 @@ namespace LinqLabs
                 .Select(o => new { Year = o.Order.OrderDate.Value.Year, SalesFigures = o.UnitPrice * o.Quantity })
                 .GroupBy(g => g.Year)
                 .Select(s => new { Year = s.Key, SalesFigures = $"{s.Sum(o => o.SalesFigures):c2}" })
-                .OrderByDescending(s => s.SalesFigures);
+                .OrderByDescending(s => s.SalesFigures);            
 
             listBox1.Items.Add("年度最高銷售金額: " + q.First().SalesFigures);
             listBox1.Items.Add("年度最低銷售金額: " + q.Last().SalesFigures);
@@ -255,5 +248,56 @@ namespace LinqLabs
             this.button37.Enabled = true;
             this.comboBox2.DataSource = question2;
         }
+        private int Max(int s1, int s2, int s3)
+        {
+            int result = s1;
+            if (result < s2)
+                result = s2;
+            else if (result < s3)
+                result = s3;
+            return result;
+        }
+
+        private int Min(int s1, int s2, int s3)
+        {
+            int result = s1;
+            if (result > s2)
+                result = s2;
+            else if (result > s3)
+                result = s3;
+            return result;
+        }
+
+        private string MySplit(int n)
+        {
+            if (n >= 60 && n <= 69)
+                return "待加強";
+            else if (n >= 70 && n <= 89)
+                return "佳";
+            else if (n >= 90)
+                return "優良";
+            else
+                return "差勁";
+        }
+
+        private string GrowthRate(decimal q1, decimal q2)
+        {
+            string result = $"{(q1 - q2) / q2 * 100:f2}%";
+            return result;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            var q = this.dbContext.Order_Details.AsEnumerable()
+                    .Select(o => new { Year = o.Order.OrderDate.Value.Year, SalesFigures = o.UnitPrice * o.Quantity })
+                    .GroupBy(g => g.Year)
+                    .Select(s => new { Year = s.Key, SalesFigures = s.Sum(o => o.SalesFigures) })
+                    .OrderBy(s => s.Year);
+
+            this.dataGridView1.DataSource = q.Skip(1)
+                .Zip(q.Take(q.Count() - 1), (q1, q2) => new { Year = q1.Year, GrowthRate = GrowthRate(q1.SalesFigures, q2.SalesFigures) })
+                .ToList();
+        }       
     }
 }
