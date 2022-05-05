@@ -14,7 +14,6 @@ namespace LinqLabs
         public Frm考試()
         {
             InitializeComponent();
-
             students_scores = new List<Student>()
                                          {
                                             new Student{ Name = "aaa", Class = "CS_101", Chi = 80, Eng = 80, Math = 50, Gender = "Male" },
@@ -23,12 +22,11 @@ namespace LinqLabs
                                             new Student{ Name = "ddd", Class = "CS_102", Chi = 80, Eng = 70, Math = 85, Gender = "Female" },
                                             new Student{ Name = "eee", Class = "CS_101", Chi = 80, Eng = 80, Math = 50, Gender = "Female" },
                                             new Student{ Name = "fff", Class = "CS_102", Chi = 80, Eng = 80, Math = 80, Gender = "Female" },
-
                                           };
         }
 
         List<Student> students_scores;
-        List<Student> students_scores2 = new List<Student>();
+        List<Student> students_scores2;
 
         public class Student
         {
@@ -43,7 +41,6 @@ namespace LinqLabs
         private void button36_Click(object sender, EventArgs e)
         {
             #region 搜尋 班級學生成績
-
             // 
             // 共幾個 學員成績 ?						
 
@@ -96,8 +93,6 @@ namespace LinqLabs
             }
         }
 
-
-
         private void button37_Click(object sender, EventArgs e)
         {
             //個人 sum, min, max, avg
@@ -148,7 +143,9 @@ namespace LinqLabs
             // print 每一群是哪幾個 ? (每一群 sort by 分數 descending)
 
             ClearData();
+            students_scores2 = new List<Student>();
             students_scores2.Clear();
+
             for (int i = 0; i < 100; i++)
             {
                 students_scores2.Add(new Student { Name = i.ToString(), Chi = rd.Next(50, 101) });
@@ -184,7 +181,9 @@ namespace LinqLabs
                     Score = s.Key,
                     Count = s.Count(),
                     Percentage = $"{((double)s.Count()/ students_scores2.Count)*100:f2}%"
-                }).OrderByDescending(o=>o.Percentage).ToList();
+                })
+                .OrderByDescending(o=>o.Percentage)
+                .ToList();
         }
 
         private void button34_Click(object sender, EventArgs e)
@@ -221,12 +220,9 @@ namespace LinqLabs
             chart2.Series[0].YValueMembers = "SalesFigures";
             chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
-
-
             // 年度最高銷售金額 年度最低銷售金額
             // 那一年總銷售最好 ? 那一年總銷售最不好 ?  
             // 那一個月總銷售最好 ? 那一個月總銷售最不好 ?
-
             // 每年 總銷售分析 圖
             // 每月 總銷售分析 圖
         }
