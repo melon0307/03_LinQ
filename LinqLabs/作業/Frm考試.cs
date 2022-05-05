@@ -9,8 +9,17 @@ namespace LinqLabs
     public partial class Frm考試 : Form
     {
         NorthwindEntities dbContext = new NorthwindEntities();
-        string[] question1 = { "共幾個 學員成績 ?", "找出 前面三個 的學員所有科目成績", "找出 後面兩個 的學員所有科目成績", "找出 Name 'aaa','bbb','ccc' 的學員國文英文科目成績", "找出學員 'bbb' 的成績", "找出除了 'bbb' 學員的學員的所有成績 ('bbb' 退學)", "找出 'aaa', 'bbb' 'ccc' 學員 國文數學兩科 科目成績", "數學不及格 ... 是誰" };
-        string[] question2 = { "個人 sum, min, max, avg", "各科 sum, min, max, avg" };
+        string[] question1 = { "共幾個 學員成績 ?",
+                               "找出 前面三個 的學員所有科目成績",
+                               "找出 後面兩個 的學員所有科目成績",
+                               "找出 Name 'aaa','bbb','ccc' 的學員國文英文科目成績",
+                               "找出學員 'bbb' 的成績",
+                               "找出除了 'bbb' 學員的學員的所有成績 ('bbb' 退學)",
+                               "找出 'aaa', 'bbb' 'ccc' 學員 國文數學兩科 科目成績",
+                               "數學不及格 ... 是誰" };
+
+        string[] question2 = { "個人 sum, min, max, avg",
+                               "各科 sum, min, max, avg" };
         public Frm考試()
         {
             InitializeComponent();
@@ -131,6 +140,7 @@ namespace LinqLabs
 
                     chi.Add(eng[0]);
                     chi.Add(math[0]);
+
                     dataGridView1.DataSource = chi;
                     break;
             }
@@ -188,6 +198,7 @@ namespace LinqLabs
 
         private void button34_Click(object sender, EventArgs e)
         {
+            ClearData();
             var q = this.dbContext.Order_Details.AsEnumerable()
                 .Select(o => new { Year = o.Order.OrderDate.Value.Year, SalesFigures = o.UnitPrice * o.Quantity })
                 .GroupBy(g => g.Year)
@@ -237,6 +248,10 @@ namespace LinqLabs
         {
             this.dataGridView1.DataSource = null;
             this.listBox1.Items.Clear();
+            this.chart1.DataSource = null;
+            this.chart1.Series[0].Points.Clear();
+            this.chart2.DataSource = null;
+            this.chart2.Series[0].Points.Clear();
         }
 
         private void comboBox2_Click(object sender, EventArgs e)
